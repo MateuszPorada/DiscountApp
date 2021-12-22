@@ -1,13 +1,13 @@
 import java.math.BigDecimal;
 import java.util.List;
 
-public class DataValidator {
+public class DataValidator implements InvoiceDataValidator {
     public void validate(List<Product> productList, BigDecimal discount, BigDecimal totalPrice) {
         validateList(productList);
         validateDiscount(discount, totalPrice);
     }
 
-    private void validateDiscount(BigDecimal discount, BigDecimal totalPrice) {
+    void validateDiscount(BigDecimal discount, BigDecimal totalPrice) {
         if (discount.compareTo(BigDecimal.ZERO) < 0) {
             throw new RuntimeException("Discount must be greater or equal 0");
         } else if (discount.compareTo(totalPrice) > 0) {
@@ -15,7 +15,7 @@ public class DataValidator {
         }
     }
 
-    private void validateList(List<Product> productList) {
+    void validateList(List<Product> productList) {
         if (productList.size() > 5) {
             throw new RuntimeException("Maximum product list size is 5");
         } else if (productList.size() < 1) {
@@ -24,7 +24,7 @@ public class DataValidator {
         productList.forEach(this::validateItem);
     }
 
-    private void validateItem(Product product) {
+    void validateItem(Product product) {
         if (!(product.getPrice().compareTo(BigDecimal.ZERO) > 0)) {
             throw new RuntimeException("Price must be higher than 0");
         }

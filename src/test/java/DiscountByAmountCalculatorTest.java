@@ -5,8 +5,8 @@ import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class DiscountCalculatorTest {
-    private final DiscountCalculator discountCalculator = new DiscountCalculator();
+class DiscountByAmountCalculatorTest {
+    private final DiscountByAmountCalculator discountCalculator = new DiscountByAmountCalculator();
 
     @Test
     void calculateItemDiscount() {
