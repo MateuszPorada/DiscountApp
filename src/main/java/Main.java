@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Main {
     private static final InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
-    private static final List<Product> DEFAULT_PRODUCT_LIST = new ArrayList<>() {
+    private static final List<Product> productList = new ArrayList<>() {
         {
             add(new Product("TV", new BigDecimal("3999.99")));
             add(new Product("Fridge", new BigDecimal("1599.99")));
@@ -15,7 +15,7 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        Invoice invoice = invoiceGenerator.generate(DEFAULT_PRODUCT_LIST, new BigDecimal(10));
+        Invoice invoice = invoiceGenerator.generate(productList, new BigDecimal(10));
         System.out.println(invoice);
     }
 }
